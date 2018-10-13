@@ -1,4 +1,7 @@
-﻿using System;
+﻿using DataModels.Dao;
+using OnlineShop.Areas.Admin.Models;
+using OnlineShop.Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,6 +16,30 @@ namespace OnlineShop.Areas.Admin.Controllers
         {
 
             return View();
+        }
+
+        public ActionResult Login(LoginModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var doa = new UserDao();
+                var result = doa.Login(model.UserName, Encryptor.MD5Hash(model.PassWord));
+                if (result)
+                {
+                    var user = doa.GetById(model.UserName);
+                    var userSession = new UserLogin();
+                    userSession.UserName = user.UserName;
+                    userSession.UserID = user.ID;
+                    Session.Add(CommonConstants.USER_SESSION, userSession);
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "User name or Password Wrong");
+
+                }
+            }
+            return View("Index");
         }
     }
 }

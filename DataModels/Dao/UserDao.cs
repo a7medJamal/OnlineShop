@@ -22,6 +22,10 @@ namespace DataModels.Dao
             return entity.ID;
         }
 
+        public User GetById (string userName )
+        {
+            return db.Users.SingleOrDefault(x=>x.UserName==userName);
+        }
         public bool Login(string userName,string passWord)
         {
             var result = db.Users.Count(x => x.UserName == userName && x.Password == passWord);
