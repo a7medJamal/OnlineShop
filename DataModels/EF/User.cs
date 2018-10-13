@@ -12,21 +12,27 @@ namespace DataModels.EF
         public long ID { get; set; }
 
         [StringLength(50)]
+        [Display(Name ="User name")]
         public string UserName { get; set; }
 
         [StringLength(32)]
+        [Display(Name = "Password")]
         public string Password { get; set; }
 
         [StringLength(50)]
+        [Display(Name = "Full name")]
         public string Name { get; set; }
 
         [StringLength(50)]
+        [Display(Name = "Full address")]
         public string Address { get; set; }
 
         [StringLength(50)]
+        [Display(Name = "Email address")]
         public string Email { get; set; }
 
         [StringLength(50)]
+        [Display(Name = "Phone number")]
         public string Phone { get; set; }
 
         public DateTime? CreateDate { get; set; }
@@ -39,6 +45,7 @@ namespace DataModels.EF
         [StringLength(50)]
         public string ModifiedBy { get; set; }
 
-        public bool? Status { get; set; }
+        [Display(Name = "Active In System or NOT")]
+        public bool Status { get; set; }
     }
 }
