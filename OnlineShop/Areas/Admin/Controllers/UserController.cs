@@ -9,12 +9,14 @@ using System.Web.Mvc;
 
 namespace OnlineShop.Areas.Admin.Controllers
 {
-    public class UserController : Controller
+    public class UserController : BaseController
     {
         // GET: Admin/User
-        public ActionResult Index()
+        public ActionResult Index(int page =1, int pagSize=10)
         {
-            return View();
+            var dao = new UserDao();
+            var model = dao.listAllPaging(page, pagSize);
+            return View(model);
         }
 
         [HttpGet]

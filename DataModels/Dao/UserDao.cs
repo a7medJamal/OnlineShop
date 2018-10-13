@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PagedList;
 
 namespace DataModels.Dao
 {
@@ -20,6 +21,12 @@ namespace DataModels.Dao
             db.Users.Add(entity);
             db.SaveChanges();
             return entity.ID;
+        }
+
+        // this method to get all users
+        public IEnumerable<User> listAllPaging(int page ,int pageSize )
+        {
+            return db.Users.OrderByDescending(x=>x.CreateDate). ToPagedList(page,pageSize);
         }
 
         public User GetById (string userName )
