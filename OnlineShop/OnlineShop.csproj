@@ -1340,6 +1340,7 @@
     <Content Include="Content\Admin\js\plugins\ckeditor\skins\moono\readme.md" />
     <Content Include="Content\Admin\js\plugins\ckfinder\plugins\fileeditor\codemirror\LICENSE" />
     <Content Include="Content\Admin\js\plugins\ckfinder\userfiles\.htaccess" />
+    <Content Include="Areas\Admin\Views\Shared\_Navigation.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
