@@ -51,9 +51,14 @@ namespace DataModels.Dao
 
         }
         // this method to get all users
-        public IEnumerable<User> listAllPaging(int page ,int pageSize )
+        public IEnumerable<User> listAllPaging(string searchString,int page ,int pageSize )
         {
-            return db.Users.OrderByDescending(x=>x.CreateDate). ToPagedList(page,pageSize);
+            IQueryable<User> model = db.Users;
+            if (!string .IsNullOrEmpty (searchString))
+            {
+                model = model.Where(x => x.UserName.Contains(searchString) || x.Name.Contains(searchString));
+            }
+            return model.OrderByDescending(x => x.CreateDate).ToPagedList(page,pageSize);
         }
 
         public User GetById (string userName )
