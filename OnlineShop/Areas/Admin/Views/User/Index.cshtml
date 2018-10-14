@@ -38,10 +38,17 @@
                         <tbody>
                             @foreach (var item in Model)
                             {
-                            <tr>
+                            <tr id="row_@item.ID">
                                 <td>
-                                    <a href="/User/Edit/@item.ID">Edit </a>
-                                    <a href="/User/Delete/@item.ID">Delete </a>
+                                    <a href="/Admin/User/Edit/@item.ID">Edit </a>
+                                    |
+                                    @Ajax.ActionLink("Delete User","Delete" ,new {@id=item.ID },new AjaxOptions
+                               {
+                                   Confirm="Are you sure to delete this?",
+                                   OnComplete= " $(' #row_"+@item.ID+" ').remove()" ,
+                                   HttpMethod="Delete"
+
+                               })
                                 </td>
                                 <td>@item.UserName</td>
                                 <td>@item.Name</td>

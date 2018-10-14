@@ -20,6 +20,40 @@ namespace OnlineShop.Areas.Admin.Controllers
         }
 
         [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            var user = new UserDao().ViewDetail(id);
+            return View(user);
+
+        }
+
+        [HttpPost]
+        public ActionResult Edit(User user)
+        {
+            if (ModelState.IsValid)
+            {
+                var dao = new UserDao();
+                if (!string.IsNullOrEmpty(user.Password))
+                {
+                    var encryptedMD5Pass = Encryptor.MD5Hash(user.Password);
+                    user.Password = encryptedMD5Pass;
+
+                }
+                var result = dao.Update(user);
+                if (result)
+                {
+                    return RedirectToAction("Index", "User");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Can't add this user");
+                }
+            }
+            return View("Index");
+
+        }
+
+        [HttpGet]
         public ActionResult Create()
         {
             return View();
@@ -39,11 +73,17 @@ namespace OnlineShop.Areas.Admin.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("","Cant add this user");
+                    ModelState.AddModelError("","Can't Edit this user");
                 }
             }
             return View("Index");
-         
+        }
+
+        [HttpDelete]
+        public ActionResult Delete (int id)
+        {
+            new UserDao().Delete(id);
+            return RedirectToAction("Index");
         }
     }
 }
