@@ -1,0 +1,15 @@
+﻿@model List<DataModels.EF.ProductCategory>
+
+<div class="categories">
+    <ul>
+        <h3>Categories</h3>
+        @foreach (var item in Model)
+        {
+            <li><a href="/san-pharm/@item.MetaTitle-@item.ID">@item.Name</a></li>
+        }
+
+        @*<li><a href="@item.lin">Toys, Kids &amp; Babies</a></li>*@
+
+
+    </ul>
+</div>
