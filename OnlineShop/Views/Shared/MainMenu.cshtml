@@ -3,7 +3,9 @@
     <ul>
         @foreach (var item in Model)
         {
-            <li><a href="@item.Link" target="@item.Target">@item.Text</a></li>
+            var url = "/Menu" + @item.Link;
+
+            <li><a href="@url" target="@item.Target">@item.Text</a></li>
         }
         <div class="clear"></div>
     </ul>

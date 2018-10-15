@@ -173,6 +173,7 @@
     <Compile Include="Common\CommonConstants.cs" />
     <Compile Include="Common\Encryptor.cs" />
     <Compile Include="Common\UserLogin.cs" />
+    <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Global.asax.cs">
@@ -1435,6 +1436,9 @@
     <Content Include="Views\Shared\TopMenu.cshtml" />
     <Content Include="Views\Shared\Footer.cshtml" />
     <Content Include="Views\Shared\ProductCategory.cshtml" />
+    <Content Include="Views\Products\Category.cshtml" />
+    <Content Include="Views\Products\Datails.cshtml" />
+    <Content Include="Views\About\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1448,7 +1452,6 @@
     <Folder Include="Data\flash\" />
     <Folder Include="Data\images\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\Products\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
