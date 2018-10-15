@@ -43,6 +43,7 @@ namespace OnlineShop.Areas.Admin.Controllers
                 var result = dao.Update(user);
                 if (result)
                 {
+                    SetAlert("Update Sucessfuly in Database", "success");
                     return RedirectToAction("Index", "User");
                 }
                 else
@@ -70,6 +71,7 @@ namespace OnlineShop.Areas.Admin.Controllers
                 long id = dao.Insert(user);
                 if (id > 0)
                 {
+                    SetAlert("Added Sucessfuly in Database", "success");
                     return RedirectToAction("Index", "User");
                 }
                 else
