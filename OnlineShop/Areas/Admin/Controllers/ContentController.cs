@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DataModels.Dao;
+using DataModels.EF;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -14,9 +16,50 @@ namespace OnlineShop.Areas.Admin.Controllers
             return View();
         }
 
+        [HttpGet]
         public ActionResult Create()
         {
+            SetViewbag();
             return View();
+        }
+
+        [HttpGet]
+        public ActionResult Edit(long id)
+        {
+            var dao = new ContentDao();
+            var content = dao.GetByID(id);
+            SetViewbag(content.CategoryID);
+            return View();
+        }
+
+
+        [HttpPost]
+        public ActionResult Edit(Content model)
+        {
+            if (ModelState.IsValid)
+            {
+
+            }
+            SetViewbag(model.CategoryID);
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult Create(Content model)
+        {
+            if (ModelState.IsValid)
+            {
+
+            }
+            SetViewbag();
+            return View();
+        }
+
+        public void SetViewbag(long? selectID=null)
+        {
+            var dao = new CategoryDao();
+            ViewBag.CategoryID = new SelectList(dao.ListAll(),"ID","Name", selectID);
         }
     }
 }

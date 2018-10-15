@@ -14,15 +14,15 @@
                 type: "POST",
                 success: function (response) {
                     console.log(response);
-                    if (response.status == true) {
-                        btn.text('Kích hoạt');
+                    if (response.status === true) {
+                        btn.text('Active');
                     }
                     else {
-                        btn.text('Khoá');
+                        btn.text('Not Active');
                     }
                 }
             });
         });
     }
-}
+};
 user.init();

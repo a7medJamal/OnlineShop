@@ -110,5 +110,15 @@ namespace DataModels.Dao
                 return false;
             }
         }
+
+        //this method to change status by ajax with json data
+        public bool ChangeStatus(long id)
+        {
+            var user = db.Users.Find(id);
+
+            user.Status = !user.Status;
+            db.SaveChanges();
+            return user.Status;
+        }
     }
 }
