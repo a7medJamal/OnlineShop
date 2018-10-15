@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataModels.Dao;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,18 +14,29 @@ namespace OnlineShop.Controllers
             return View();
         }
 
-        public ActionResult About()
+        [ChildActionOnly]
+        public ActionResult MainMenu()
         {
-            ViewBag.Message = "Your application description page.";
+            var model = new MenuDao().ListByGroupID(1);
 
-            return View();
+            return PartialView(model);
         }
 
-        public ActionResult Contact()
+        [ChildActionOnly]
+        public ActionResult TopMenu()
         {
-            ViewBag.Message = "Your contact page.";
+            var model = new MenuDao().ListByGroupID(2);
 
-            return View();
+            return PartialView(model);
         }
+
+        [ChildActionOnly]
+        public ActionResult Footer()
+        {
+            var model = new FooterDao().GetFooter();
+
+            return PartialView(model);
+        }
+
     }
 }
