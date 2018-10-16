@@ -20,5 +20,9 @@ namespace DataModels.Dao
             return db.ProductCategories.Where(x => x.Status == true).OrderBy(x => x.DisplayOrder).ToList();
         }
 
+        public ProductCategory ViewDetails(long id)
+        {
+            return db.ProductCategories.Find(id);
+        }
     }
 }

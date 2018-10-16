@@ -30,6 +30,8 @@ namespace OnlineShop.Controllers
         public ActionResult Datails(long Id)
         {
             var product = new ProductDao().ViewDetails(Id);
+            ViewBag.Category = new ProductCategoryDao().ViewDetails(product.CategoryID.Value);
+            ViewBag.RealtedProducts = new ProductDao().ListRelatedProducts(Id);
             return View(product);
         }
     }

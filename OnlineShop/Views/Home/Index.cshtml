@@ -10,10 +10,11 @@
 {
     <div class="header_slide">
         <div class="header_bottom_left">
-            
-            @{Html.RenderAction("ProductCategory", "Products");}
+            <div class="categories">
 
-        </div>
+                @{Html.RenderAction("ProductCategory", "Products");}
+                </div>
+            </div>
         <div class="header_bottom_right">
             <div class="slider">
                 <div id="slider">
@@ -102,7 +103,7 @@
 
         {
 
-            var url = "/chi-tiet" + item.MetaTitle + "-" + item.ID;
+            var url = "/ProductDetails/" + item.MetaTitle + "-" + item.ID;
 
             <div class="grid_1_of_4 images_1_of_4">
                 <a href="@url"><img src="@item.Image" alt="@item.Name" /></a>

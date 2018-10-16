@@ -17,14 +17,16 @@ namespace OnlineShop
 
             routes.MapRoute(
                 name: "Product Datails",
-                url: "Category/{metatitle}-{Id}",
+               // url: "chi-tiet/{metatitle}-{id}",
+                url: "ProductDetails/{metatitle}-{Id}",
                 defaults: new { controller = "Products", action = "Datails", id = UrlParameter.Optional }, namespaces: new[] { "OnlineShop.Controllers" }
             );
 
 
             routes.MapRoute(
            name: "Product Category",
-           url: "ProductDetails/{metatitle}-{catId}",
+          // url: "san-pham/{metatitle}-{cateId}",
+           url: "Category/{metatitle}-{catId}",
            defaults: new { controller = "Products", action = "Category", id = UrlParameter.Optional }, namespaces: new[] { "OnlineShop.Controllers" }
        );
 
