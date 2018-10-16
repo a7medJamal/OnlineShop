@@ -17,7 +17,7 @@ namespace OnlineShop
 
             routes.MapRoute(
                 name: "Product Datails",
-               // url: "chi-tiet/{metatitle}-{id}",
+                // url: "chi-tiet/{metatitle}-{id}",
                 url: "ProductDetails/{metatitle}-{Id}",
                 defaults: new { controller = "Products", action = "Datails", id = UrlParameter.Optional }, namespaces: new[] { "OnlineShop.Controllers" }
             );
@@ -25,26 +25,32 @@ namespace OnlineShop
 
             routes.MapRoute(
            name: "Product Category",
-          // url: "san-pham/{metatitle}-{cateId}",
+           // url: "san-pham/{metatitle}-{cateId}",
            url: "Category/{metatitle}-{catId}",
            defaults: new { controller = "Products", action = "Category", id = UrlParameter.Optional }, namespaces: new[] { "OnlineShop.Controllers" }
        );
 
 
             routes.MapRoute(
-          name: "About",
-          url: "Menu/{Link}",
-          defaults: new { controller = "About", action = "Index", id = UrlParameter.Optional }, namespaces: new[] { "OnlineShop.Controllers" }
-      );
+            name: "About",
+            url: "Menu/{Link}",
+            defaults: new { controller = "About", action = "Index", id = UrlParameter.Optional }, namespaces: new[] { "OnlineShop.Controllers" }
+        );
+
+            routes.MapRoute(
+             name: "Add Cart",
+             url: "AddToCart",
+             defaults: new { controller = "Cart", action = "AddItem", id = UrlParameter.Optional }, namespaces: new[] { "OnlineShop.Controllers" }
+         );
 
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }, namespaces:new[] { "OnlineShop.Controllers" }
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }, namespaces: new[] { "OnlineShop.Controllers" }
             );
 
 
-          
+
         }
     }
 }

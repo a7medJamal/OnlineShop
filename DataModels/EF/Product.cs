@@ -35,7 +35,7 @@ namespace DataModels.EF
 
         public bool? IncludeVAT { get; set; }
 
-        public int? Quantity { get; set; }
+        public int Quantity { get; set; }
 
         public long? CategoryID { get; set; }
 
