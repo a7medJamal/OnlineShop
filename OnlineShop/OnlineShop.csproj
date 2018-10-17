@@ -1522,10 +1522,17 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CommonDataSet\CommonDataSet.csproj">
+      <Project>{66e5f154-e150-4a62-82f6-348a4e778476}</Project>
+      <Name>CommonDataSet</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DataModels\DataModels.csproj">
       <Project>{1aecb1fc-6a02-42f4-b2a5-a9059fbdc677}</Project>
       <Name>DataModels</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
