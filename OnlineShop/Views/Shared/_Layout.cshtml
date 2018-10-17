@@ -15,14 +15,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
     <link href="~/Content/Client/css/style.css" rel="stylesheet" type="text/css" media="all" />
     <link href="~/Content/Client/css/slider.css" rel="stylesheet" type="text/css" media="all" />
-    
-    
+
+
     <link href="~/Content/Client/css/font-awesome.min.css" rel="stylesheet" />
 
     <link href="~/Content/Client/css/bootstrap.css" rel="stylesheet" />
 
     <script type="text/javascript" src="~/Content/Client/js/jquery-1.7.2.min.js"></script>
-   
+
     <script src="~/Content/Client/js/jquery-1.11.3.min.js"></script>
     <script src="~/Content/Client/js/bootstrap.min.js"></script>
 
@@ -42,47 +42,42 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 <div class="logo">
                     <a href="index.html"><img src="~/Content/Client/~/Content/Client/images/logo.png" alt="" /></a>
                 </div>
-                <div class="cart">
-                    <p>
-                        Welcome to our Online Store! <span>Cart:</span><div id="dd" class="wrapper-dropdown-2">
-                            0 item(s) - $0.00
-                            <ul class="dropdown">
-                                <li>you have no items in your Shopping cart</li>
-                            </ul>
-                        </div>
-                    </p>
-                </div>
-                <script type="text/javascript">function DropDown(el) {
-				this.dd = el;
-				this.initEvents();
-			}
-			DropDown.prototype = {
-				initEvents : function() {
-					var obj = this;
 
-					obj.dd.on('click', function(event){
-						$(this).toggleClass('active');
-						event.stopPropagation();
-					});
-				}
-			}
 
-			$(function() {
+                @{Html.RenderAction("HeaderCart", "Home"); }
 
-				var dd = new DropDown( $('#dd') );
+                <script type="text/javascript">
+                    function DropDown(el) {
+                        this.dd = el;
+                        this.initEvents();
+                    }
+                    DropDown.prototype = {
+                        initEvents: function () {
+                            var obj = this;
 
-				$(document).click(function() {
-					// all dropdowns
-					$('.wrapper-dropdown-2').removeClass('active');
-				});
+                            obj.dd.on('click', function (event) {
+                                $(this).toggleClass('active');
+                                event.stopPropagation();
+                            });
+                        }
+                    }
 
-			});</script>
+                    $(function () {
+
+                        var dd = new DropDown($('#dd'));
+
+                        $(document).click(function () {
+                            // all dropdowns
+                            $('.wrapper-dropdown-2').removeClass('active');
+                        });
+
+                    });</script>
                 <div class="clear"></div>
             </div>
             <div class="header_bottom">
-                
 
-               @{Html.RenderAction("MainMenu", "Home"); }
+
+                @{Html.RenderAction("MainMenu", "Home"); }
 
                 <div class="search_box">
                     <form>
@@ -92,7 +87,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 <div class="clear"></div>
             </div>
 
-            @RenderSection("slide",required:false)
+            @RenderSection("slide", required: false)
 
         </div>
         <div class="main">
@@ -106,11 +101,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         @{Html.RenderAction("Footer", "Home"); }
 
     </div>
-    <script type="text/javascript">$(document).ready(function() {
-			$().UItoTop({ easingType: 'easeOutQuart' });
+    <script type="text/javascript">
+    $(document).ready(function () {
+            $().UItoTop({ easingType: 'easeOutQuart' });
 
-		});</script>
+        });</script>
     <a href="#" id="toTop"><span id="toTopHover"> </span></a>
+    @RenderSection("jsFooter", required: false)
 </body>
 </html>
 

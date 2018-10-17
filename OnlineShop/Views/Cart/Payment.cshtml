@@ -1,13 +1,9 @@
 ﻿@model List<OnlineShop.Models.CartItem>
 @{
-    ViewBag.Title = "Cart";
+    ViewBag.Title = "Payment";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@section jsFooter
-    {
-<script src="~/Content/Client/js/controller/cartController.js"></script>
-}
 
 <div class="content">
     <div class="section group">
@@ -41,16 +37,35 @@
 
                 </tbody>
             </table>
-
-            <button id="btnContinue" class="btn">Continue</button>
-            <button id="btnUpdate" class="btn">Update</button>
-            <button id="btnDeleteAll" class="btn">Delete All</button>
-            <button id="btnPayment" class="btn">Payment Now</button>
-        }
-        else
-        {
-            <span class="alert alert-danger">Your cart is empty</span>
-        }
-
+        }        
     </div>
+    <div class="sction group">
+        <div class="col-md-6">
+            @using (Html.BeginForm("Payment", "Cart", FormMethod.Post))
+            {
+                <div class="form-group">
+                    <label>Ship Name</label>
+                    <input name="shipName" class="form-control" />
+                </div>
+
+                <div class="form-group">
+                    <label>Mobile</label>
+                    <input name="mobile" class="form-control" />
+                </div>
+
+                <div class="form-group">
+                    <label>Address</label>
+                    <input name="address" class="form-control" />
+                </div>
+
+                <div class="form-group">
+                    <label>Email</label>
+                    <input name="email" class="form-control" />
+                </div>
+
+                <button type="submit" class="btn btn-primary"> Payment </button>
+            }
+        </div>
+    </div>
+
 </div>

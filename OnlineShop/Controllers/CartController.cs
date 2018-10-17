@@ -1,11 +1,12 @@
 ﻿using DataModels.Dao;
+using DataModels.EF;
 using OnlineShop.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
+using System.Web.Script.Serialization;
 namespace OnlineShop.Controllers
 {
     public class CartController : Controller
@@ -21,6 +22,48 @@ namespace OnlineShop.Controllers
                 list = (List<CartItem>)cart;
             }
             return View(list);
+        }
+
+        public JsonResult DeleteAll()
+        {
+            Session[CartSession]=null;
+
+            return Json(new
+            {
+                status = true
+            });
+
+        }
+
+        public JsonResult Delete(long id)
+        {
+            var sessionCart = (List<CartItem>)Session[CartSession];
+            sessionCart.RemoveAll(x => x.Product.ID==id);
+            Session[CartSession] = sessionCart;
+            return Json(new
+            {
+                status = true
+            });
+
+        }
+        public JsonResult Update (string cartModel)
+        {
+           var jsonCart = new JavaScriptSerializer().Deserialize<List<CartItem>>(cartModel);
+            var sessionCart =(List<CartItem>) Session[CartSession];
+
+            foreach (var item in sessionCart)
+            {
+                var jsonItem = jsonCart.SingleOrDefault(x => x.Product.ID == item.Product.ID);
+                if (jsonItem !=null)
+                {
+                    item.Quantity = jsonItem.Quantity;
+                }
+            }
+            Session[CartSession] = sessionCart;
+            return Json(new
+            {
+                status = true
+            });
         }
 
         public  ActionResult AddItem( long productId ,int quantity)
@@ -59,6 +102,57 @@ namespace OnlineShop.Controllers
                 Session[CartSession] = List;
             }
             return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public ActionResult  Payment()
+        {
+            var cart = Session[CartSession];
+            var list = new List<CartItem>();
+            if (cart != null)
+            {
+                list = (List<CartItem>)cart;
+            }
+            return View(list);
+
+        }
+
+        [HttpPost]
+        public ActionResult Payment(string shipName, string mobile, string address,string email)
+        {
+            var order = new Order();
+            order.CreateDate = DateTime.Now;
+            order.ShipAddress = address;
+            order.ShipMobile = mobile;
+            order.ShipName = shipName;
+            order.ShipEmail = email;
+            try
+            {
+                var id = new OrderDao().Insert(order);
+                var cart = (List<CartItem>)Session[CartSession];
+                var detailDao = new OrderDetailsDao();
+                foreach (var item in cart)
+                {
+                    var orderDetail = new OrderDetail();
+                    orderDetail.ProductID = item.Product.ID;
+                    orderDetail.Price = item.Product.Price;
+                    orderDetail.OrderID = id;
+                    orderDetail.Quantity = item.Quantity;
+                    detailDao.Insert(orderDetail);
+                }
+            }
+            catch (Exception)
+            {
+                return Redirect("/NotSuccess");
+
+            }
+            
+            return Redirect("/Success");
+
+        }
+        public ActionResult Success()
+        {
+            return View();
         }
     }
 }
