@@ -65,12 +65,18 @@ namespace OnlineShop
   );
 
             routes.MapRoute(
+           name: "Login",
+           url: "Login",
+           defaults: new { controller = "User", action = "Login", id = UrlParameter.Optional }, namespaces: new[] { "OnlineShop.Controllers" }
+           );
+
+            routes.MapRoute(
           name: "Payment Success",
           url: "Success",
           defaults: new { controller = "Cart", action = "Success", id = UrlParameter.Optional }, namespaces: new[] { "OnlineShop.Controllers" }
       );
 
-          
+
 
 
             routes.MapRoute(

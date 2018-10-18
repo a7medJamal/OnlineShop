@@ -178,6 +178,6 @@ namespace DataModels.EF
                 .IsUnicode(false);
         }
 
-  
+        
     }
 }
