@@ -177,5 +177,7 @@ namespace DataModels.EF
                 .Property(e => e.ModifiedBy)
                 .IsUnicode(false);
         }
+
+  
     }
 }
