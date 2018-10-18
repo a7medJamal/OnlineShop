@@ -3,7 +3,7 @@
     <ul>
         @foreach (var item in Model)
         {
-            var url = "/Menu" + @item.Link;
+            var url =  @item.Link;
 
             <li><a href="@url" target="@item.Target">@item.Text</a></li>
         }

@@ -13,8 +13,6 @@ namespace OnlineShop
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-
-
             routes.MapRoute(
                 name: "Product Datails",
                 // url: "chi-tiet/{metatitle}-{id}",
@@ -36,27 +34,31 @@ namespace OnlineShop
             url: "Menu/{Link}",
             defaults: new { controller = "About", action = "Index", id = UrlParameter.Optional }, namespaces: new[] { "OnlineShop.Controllers" }
         );
+            routes.MapRoute(
+        name: "Contact",
+        url: "Contacts",
+        defaults: new { controller = "Contact", action = "Index", id = UrlParameter.Optional }, namespaces: new[] { "OnlineShop.Controllers" }
+    );
+            routes.MapRoute(
+            name: "Cart",
+            url: "CartItems",
+            defaults: new { controller = "Cart", action = "Index", id = UrlParameter.Optional }, namespaces: new[] { "OnlineShop.Controllers" }
+        );
 
-          routes.MapRoute(
-          name: "Cart",
-          url: "CartItems",
-          defaults: new { controller = "Cart", action = "Index", id = UrlParameter.Optional }, namespaces: new[] { "OnlineShop.Controllers" }
-      );
-
-
-       routes.MapRoute(
-      name: "Payment",
-      url: "Payment",
-      defaults: new { controller = "Cart", action = "Payment", id = UrlParameter.Optional }, namespaces: new[] { "OnlineShop.Controllers" }
-  );
 
             routes.MapRoute(
-    name: "Payment Success",
-    url: "Success",
-    defaults: new { controller = "Cart", action = "Success", id = UrlParameter.Optional }, namespaces: new[] { "OnlineShop.Controllers" }
-);
+           name: "Payment",
+           url: "Payment",
+           defaults: new { controller = "Cart", action = "Payment", id = UrlParameter.Optional }, namespaces: new[] { "OnlineShop.Controllers" }
+       );
 
+            routes.MapRoute(
+          name: "Payment Success",
+          url: "Success",
+          defaults: new { controller = "Cart", action = "Success", id = UrlParameter.Optional }, namespaces: new[] { "OnlineShop.Controllers" }
+      );
 
+          
 
 
             routes.MapRoute(

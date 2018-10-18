@@ -22,8 +22,8 @@
                     content: content
                 },
                 success: function (res) {
-                    if (res.status == true) {
-                        window.alert('Gửi thành công');
+                    if (res.status === true) {
+                        window.alert('Your Message Send Scucces');
                         contact.resetForm();
                     }
                 }
