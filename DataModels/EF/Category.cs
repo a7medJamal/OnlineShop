@@ -12,6 +12,8 @@ namespace DataModels.EF
         public long ID { get; set; }
 
         [StringLength(250)]
+        [Display(Name ="Category_Name",ResourceType =typeof(StaticResources.Resources))]
+        [Required(ErrorMessageResourceName = "Category_RequiredName" , ErrorMessageResourceType =typeof(StaticResources.Resources))]
         public string Name { get; set; }
 
         [StringLength(250)]
@@ -38,10 +40,14 @@ namespace DataModels.EF
         public string MetaKeywords { get; set; }
 
         [StringLength(250)]
+        [Display(Name = "Category_MetaDescriptions", ResourceType = typeof(StaticResources.Resources))]
         public string MetaDescriptions { get; set; }
 
+        [Display(Name = "Category_Status", ResourceType = typeof(StaticResources.Resources))]
         public bool? Status { get; set; }
 
         public bool? ShowOnHome { get; set; }
+
+        public string Language { get; set; }
     }
 }

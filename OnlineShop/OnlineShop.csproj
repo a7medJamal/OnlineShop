@@ -1550,6 +1550,10 @@
       <Project>{1aecb1fc-6a02-42f4-b2a5-a9059fbdc677}</Project>
       <Name>DataModels</Name>
     </ProjectReference>
+    <ProjectReference Include="..\StaticResources\StaticResources.csproj">
+      <Project>{3bbd1b2a-9ab4-4d8d-a374-2851f7be5136}</Project>
+      <Name>StaticResources</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
