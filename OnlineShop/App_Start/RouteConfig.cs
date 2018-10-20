@@ -26,6 +26,11 @@ namespace OnlineShop
                 defaults: new { controller = "Products", action = "Datails", id = UrlParameter.Optional }, namespaces: new[] { "OnlineShop.Controllers" }
             );
 
+            routes.MapRoute(
+               name: "Main Search",
+               url: "MainSearch",
+               defaults: new { controller = "Products", action = "Search", id = UrlParameter.Optional }, namespaces: new[] { "OnlineShop.Controllers" }
+           );
 
             routes.MapRoute(
            name: "Product Category",

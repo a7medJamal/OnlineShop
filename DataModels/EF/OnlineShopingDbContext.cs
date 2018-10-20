@@ -178,6 +178,6 @@ namespace DataModels.EF
                 .IsUnicode(false);
         }
 
-        
+        public System.Data.Entity.DbSet<DataModels.ViewModel.ProductViewModel> ProductViewModels { get; set; }
     }
 }

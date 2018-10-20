@@ -1,4 +1,4 @@
-﻿@model List< DataModels.EF.Product>
+﻿@model List<DataModels.ViewModel.ProductViewModel>
 @{
     var category = (DataModels.EF.ProductCategory)ViewBag.Category;
     ViewBag.Title = category.Name;
@@ -28,14 +28,14 @@
             var url = "/ProductDetails/" + item.MetaTitle + "-" + item.ID;
 
             <div class="grid_1_of_4 images_1_of_4">
-                <a href="@url"><img src="@item.Image" alt="" /></a>
+                <a href="@url"><img src="@item.Images" alt="" /></a>
                 <h2>@item.Name </h2>
                 <div class="price-details">
                     <div class="price-number">
                         <p><span class="rupees">@(item.Price.HasValue ? @item.Price.Value.ToString("N0") : "Dollar")</span></p>
                     </div>
                     <div class="add-cart">
-                        <h4><a href="/gio-hang/@item.ID">Add to Cart</a></h4>
+                        <h4><a href="/Category/@item.ID">Add to Cart</a></h4>
                     </div>
                     <div class="clear"></div>
                 </div>
@@ -92,7 +92,7 @@
         }
         else
         {
-            <span>Not Go</span>
+            <span> </span>
         }
     </div>
 

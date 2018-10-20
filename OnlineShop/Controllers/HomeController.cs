@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI;
 
 namespace OnlineShop.Controllers
 {
@@ -21,6 +22,7 @@ namespace OnlineShop.Controllers
         }
 
         [ChildActionOnly]
+        [OutputCache(Duration =3600 * 24)]
         public ActionResult MainMenu()
         {
             var model = new MenuDao().ListByGroupID(1);
@@ -29,6 +31,7 @@ namespace OnlineShop.Controllers
         }
 
         [ChildActionOnly]
+        [OutputCache(Duration = 3600 * 24)]
         public ActionResult TopMenu()
         {
             var model = new MenuDao().ListByGroupID(2);
@@ -49,6 +52,7 @@ namespace OnlineShop.Controllers
         }
 
         [ChildActionOnly]
+        [OutputCache(Duration = 3600 * 24)]
         public ActionResult Footer()
         {
             var model = new FooterDao().GetFooter();

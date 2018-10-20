@@ -19,12 +19,15 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
     <link href="~/Content/Client/css/boostrap-social.css" rel="stylesheet" />
     <link href="~/Content/Client/css/font-awesome.min.css" rel="stylesheet" />
-
+    @*this for autocomplete search by jquery*@
+    <link href="~/Content/Client/css/jquery-ui.css" rel="stylesheet" />
     <link href="~/Content/Client/css/bootstrap.css" rel="stylesheet" />
 
     <script type="text/javascript" src="~/Content/Client/js/jquery-1.7.2.min.js"></script>
 
     <script src="~/Content/Client/js/jquery-1.11.3.min.js"></script>
+    @*this for autocomplete search by jquery*@
+    <script src="~/Content/Client/js/jquery-ui.js"></script>
     <script src="~/Content/Client/js/bootstrap.min.js"></script>
 
     <script type="text/javascript" src="~/Content/Client/js/move-top.js"></script>
@@ -81,8 +84,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 @{Html.RenderAction("MainMenu", "Home"); }
 
                 <div class="search_box">
-                    <form>
-                        <input type="text" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}"><input type="submit" value="">
+                    <form action="/MainSearch" method="get">
+                        <input type="text"  id="txtKeyword" name="keyword" placeholder="Search"><input type="submit" value="">
                     </form>
                 </div>
                 <div class="clear"></div>
@@ -108,6 +111,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
         });</script>
     <a href="#" id="toTop"><span id="toTopHover"> </span></a>
+
+    <script src="~/Content/Client/js/controller/baseController.js"></script>
     @RenderSection("jsFooter", required: false)
 </body>
 </html>
