@@ -41,5 +41,12 @@ namespace OnlineShop.Models
         [Display(Name = "Phone")]
         [Required(ErrorMessage = "your Phone plz")]
         public string Phone { get; set; }
+
+
+        [Display(Name = "Province ID")]
+        public string ProvinceID { get; set; }
+
+        [Display(Name = "District ID")]
+        public string DistrictID { get; set; }
     }
 }
